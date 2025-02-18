@@ -139,11 +139,11 @@ from IPython.display import display
 
 display(s3_olci_metadata)
 ```
-![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/1.png?raw=true)
+![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/s3_olci_metadata.png?raw=true)
 
 ```python
 from IPython.display import display
 
 display(s2_metadata)
 ```
-![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/图片3.png?raw=true)
+![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/s2_metadata.png?raw=true)
