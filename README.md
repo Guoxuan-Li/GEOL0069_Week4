@@ -147,3 +147,39 @@ from IPython.display import display
 display(s2_metadata)
 ```
 ![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/s2_metadata.png?raw=true)
+
+These tables display metadata for Sentinel-3 OLCI images and Sentinel-2 images by using the Copernicus Data Space API.
+
+<!-- Co-locate the data -->
+#### Co-locate the data
+Using these metadata to co-locate them and produce another table shows the details of the colocation pairs, and match rows from S2 and S3 OLCI by their geo_footprint and save the results as 'results'. The top 5 results should like the table below:
+
+![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/results.head(5).png?raw=true)
+
+In addition, we can use code to visualise the co-located footprint from Sentinel-2 and Sentinel-3 OLCI.
+```python
+from IPython.display import display
+
+map_result = plot_results(results.head(5))
+display(map_result)
+```
+![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/map_result1.jpg?raw=true)
+
+
+
+
+<!-- Proceeding with Sentinel-3 OLCI Download -->
+#### Proceeding with Sentinel-3 OLCI Download
+Download the Sentinel-3 OLCI data, and keep the method consistent with Sentinel-2. We will apply the same filename conversion logic and follow the structured steps to retrieve data from the Copernican data space.
+
+#### Sentinel-3 SRAL
+It is also possible to co-locate S2/S3 OLCI with S3 SRAL (altimetry data). We just need to fetch the S3 SRAL metadata and do the co-location again for S3 SRAL with S2, and visualise the co-location results.
+
+![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/map_result2.jpg?raw=true)
+
+The blue outline represents the geographic footprint of the two satellite datasets detected in the overlapping area of the Arctic region.
+
+
+<!-- Unsupervised Learning -->
+## Unsupervised Learning
+
