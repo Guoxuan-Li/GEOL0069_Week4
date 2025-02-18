@@ -132,5 +132,5 @@ import folium
 
 <!-- Step 1: Get the Metadata for satellites (Sentinel-2 and Sentinel-3 OLCI in this case) -->
 ### Step 1: Get the Metadata for satellites (Sentinel-2 and Sentinel-3 OLCI in this case)
-
+![image](Images/1.png)
 
