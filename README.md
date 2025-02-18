@@ -132,5 +132,18 @@ import folium
 
 <!-- Step 1: Get the Metadata for satellites (Sentinel-2 and Sentinel-3 OLCI in this case) -->
 ### Step 1: Get the Metadata for satellites (Sentinel-2 and Sentinel-3 OLCI in this case)
+We illustrate how we co-locate Sentinel-2 and Sentinel-3 OLCI by first obtaining metadata. Since we were trying to find colocation between 2 satellites, we obtained 2 metadata tables representing 2 satellites of concern to us. In this case, they are named objects' s3_olci_metadata 'and' s2_metadata '. And using IPython to display those data.
+
+```python
+from IPython.display import display
+
+display(s3_olci_metadata)
+```
 ![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/1.png?raw=true)
 
+```python
+from IPython.display import display
+
+display(s2_metadata)
+```
+![image](https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/图片3.png?raw=true)
