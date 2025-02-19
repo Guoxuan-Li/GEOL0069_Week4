@@ -79,7 +79,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 
-base_path = "/content/drive/MyDrive/GEOL0069/2425/Week 4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/" # You need to specify the path
+base_path = "/content/drive/MyDrive/GEOL0069/week4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/" # You need to specify the path
 bands_paths = {
     'B4': base_path + 'T01WCU_20190301T235611_B04.jp2',
     'B3': base_path + 'T01WCU_20190301T235611_B03.jp2',
@@ -128,7 +128,7 @@ from sklearn.mixture import GaussianMixture
 import matplotlib.pyplot as plt
 
 # Paths to the band images
-base_path = "/content/drive/MyDrive/GEOL0069/2425/Week 4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/" # You need to specify the path
+base_path = "/content/drive/MyDrive/GEOL0069/week4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/" # You need to specify the path
 bands_paths = {
     'B4': base_path + 'T01WCU_20190301T235611_B04.jp2',
     'B3': base_path + 'T01WCU_20190301T235611_B03.jp2',
@@ -377,7 +377,7 @@ def calculate_SSD(RIP):
 ```
 
 ```python
-path = '/content/drive/MyDrive/GEOL0069/2425/Week 4/Unsupervised Learning/'
+path = '/content/drive/MyDrive/GEOL0069/week4/Unsupervised Learning/'
 SAR_file = 'S3A_SR_2_LAN_SI_20190307T005808_20190307T012503_20230527T225016_1614_042_131______LN3_R_NT_005.SEN3'
 SAR_data = Dataset(path + SAR_file + '/enhanced_measurement.nc')
 
