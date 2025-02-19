@@ -116,7 +116,7 @@ To simplify data acquisition and processing, first load basic functions to help 
 from google.colab import drive
 drive.mount('/content/drive')
 ```
-Using NumPy, shapely, datatime, requests, pandas, xml.etree, os, json and folium, scripts fetch, process, and visualise data from the Copernicus Data Space Ecosystem. The specific codes are in the code folder.
+Using NumPy, shapely, datatime, requests, pandas, xml.etree, os, json and folium, scripts fetch, process, and visualise data from the Copernicus Data Space Ecosystem. The specific codes are in the code folder -- Data Colocating.
 
 ```python
 from datetime import datetime, timedelta
