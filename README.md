@@ -412,7 +412,7 @@ This section applies unsupervised learning to classify Sentinel-3 altimetry data
 
 <!-- Read in Functions Needed -->
 #### Read in Functions Needed
-Before delving into the modeling process, the data is pre-processed to ensure compatibility with the analytical model. Transform raw data into meaningful variables such as peaks and stack standard deviations (SSDs) and delete some NaN values from the dataset. Using netCDF4, numpy, matplotlib, scipy, glob and sklearn to extract and prrocess the Sentinel-3 SAR altimetry data to classify sea ice and leads. Visualize the data and plot the mean waveform and standard deviation of each class, the specific scripts are in the code folder.
+Before delving into the modeling process, the data is pre-processed to ensure compatibility with the analytical model. Transform raw data into meaningful variables such as peaks and stack standard deviations (SSDs) and delete some NaN values from the dataset. Using netCDF4, numpy, matplotlib, scipy, glob and sklearn to extract and prrocess the Sentinel-3 SAR altimetry data to classify sea ice and leads. Visualize the data and plot the mean waveform and standard deviation of each class, the specific scripts are in the code folder -- Unsupervised Learning.
 
 ```python
 # mean and standard deviation for all echoes
