@@ -312,7 +312,7 @@ import numpy as np
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
 
-base_path = "/content/drive/MyDrive/GEOL0069/2425/Week 4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/" # You need to specify the path
+base_path = "/content/drive/MyDrive/GEOL0069/week4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/" # You need to specify the path
 bands_paths = {
     'B4': base_path + 'T01WCU_20190301T235611_B04.jp2',
     'B3': base_path + 'T01WCU_20190301T235611_B03.jp2',
@@ -366,7 +366,7 @@ from sklearn.mixture import GaussianMixture
 import matplotlib.pyplot as plt
 
 # Paths to the band images
-base_path = "/content/drive/MyDrive/GEOL0069/2425/Week 4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/" # You need to specify the path
+base_path = "/content/drive/MyDrive/GEOL0069/week4/Unsupervised Learning/S2A_MSIL1C_20190301T235611_N0207_R116_T01WCU_20190302T014622.SAFE/GRANULE/L1C_T01WCU_A019275_20190301T235610/IMG_DATA/" # You need to specify the path
 bands_paths = {
     'B4': base_path + 'T01WCU_20190301T235611_B04.jp2',
     'B3': base_path + 'T01WCU_20190301T235611_B03.jp2',
@@ -511,6 +511,34 @@ plt.title('Plot of 10 equally spaced functions where clusters_gmm = 0 (aligned)'
 <!-- Compare with ESA data -->
 ### Compare with ESA data
 In the ESA dataset, sea ice = 1 and lead = 2. Therefore, we need to subtract 1 from it so our predicted labels are comparable with the official product labels. Finally, creat a confusion matrix and classification report to summarise the accuracy of classifications.
+
+```python
+flag_cleaned_modified = flag_cleaned - 1
+```
+
+This line of code, flag_cleaned_modified = flag_cleaned - 1, modifies the flag_cleaned array by subtracting 1 from each of its elements. The purpose of this operation is likely to adjust the labeling of data categories, ensuring that the values start from zero instead of one. This can be useful for compatibility with machine learning models that expect zero-based indexing or for standardizing the dataset before further processing. The modified array, flag_cleaned_modified, retains the same structure as flag_cleaned but with all values shifted down by one.
+
+
+```python
+from sklearn.metrics import confusion_matrix, classification_report
+
+true_labels = flag_cleaned_modified   # true labels from the ESA dataset
+predicted_gmm = clusters_gmm          # predicted labels from GMM method
+
+# Compute confusion matrix
+conf_matrix = confusion_matrix(true_labels, predicted_gmm)
+
+# Print confusion matrix
+print("Confusion Matrix:")
+print(conf_matrix)
+
+# Compute classification report
+class_report = classification_report(true_labels, predicted_gmm)
+
+# Print classification report
+print("\nClassification Report:")
+print(class_report)
+```
 
 <img src="https://github.com/Guoxuan-Li/GEOL0069_Week4/blob/main/Images/matrix.jpg?raw=true" width="500" height="400" />
 
