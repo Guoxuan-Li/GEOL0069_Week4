@@ -4,10 +4,13 @@
 
 ### Step 0: Read in Functions Needed
 
+This code is used to connect GoogleDrive into Colab.
 ```python
 from google.colab import drive
 drive.mount('/content/drive')
 ```
+
+This script is used to extract, process, and analyse Sentinel-2 and Sentinel-3 Earth observation data from the Copernicus data space ecosystem.
 ```python
 from datetime import datetime, timedelta
 from shapely.geometry import Polygon, Point, shape
@@ -365,6 +368,7 @@ def make_timezone_naive(dt):
 <!-- Step 1: Get the Metadata for satellites (Sentinel-2 and Sentinel-3 OLCI in this case) -->
 ### Step 1: Get the Metadata for satellites (Sentinel-2 and Sentinel-3 OLCI in this case)
 
+This code used to retrieve and save metadata of Sentinel-2 and Sentinel-3 OLCI satellite data within a specified date range.
 ```python
 username = ""
 password = ""
@@ -396,12 +400,13 @@ s2_metadata.to_csv(
 )
 ```
 
+And this code used to display the Sentinel-3 OLCI satellite metadata as a table.
 ```python
 from IPython.display import display
 
 display(s3_olci_metadata)
 ```
-
+This code used to display the Sentinel-2 metadata as a table.
 ```python
 from IPython.display import display
 
@@ -411,6 +416,7 @@ display(s2_metadata)
 
 #### Co-locate the data
 
+Read the metadata.
 ```python
 s3_olci_metadata = pd.read_csv(
     path_to_save_data + "sentinel3_olci_metadata.csv"
@@ -420,6 +426,7 @@ s2_metadata = pd.read_csv(
 )
 ```
 
+Process the metadata.
 ```python
 s3_olci_metadata["ContentDate.Start"] = pd.to_datetime(
     s3_olci_metadata["ContentDate"].apply(lambda x: eval(x)["Start"])
@@ -440,13 +447,14 @@ results = check_collocation(
 )
 ```
 
+Display the first 5 results as a table.
 ```python
 from IPython.display import display
 
 display(results.head(5))
 ```
 
-
+Display an map visualisation of the first 5 collocated satellite observations. 
 ```python
 from IPython.display import display
 
@@ -457,7 +465,7 @@ display(map_result)
 
 <!-- Proceeding with Sentinel-3 OLCI Download -->
 #### Proceeding with Sentinel-3 OLCI Download
-
+This code used to download specific Sentinel-3 OLCI data from the Copernicus database.
 ```python
 download_dir = ""  # Replace with your desired download directory
 product_id = results['Satellite1_ID'][0] # Replace with your desired file id
@@ -468,7 +476,7 @@ download_single_product(product_id, file_name, access_token, download_dir)
 
 #### Sentinel-3 SRAL
 
-
+This code retrieves and saves Sentinel-3 SRAL metadata.
 ```python
 sentinel3_sral_data = query_sentinel3_sral_arctic_data(
     start_date, end_date, access_token
@@ -479,6 +487,7 @@ sentinel3_sral_data.to_csv(
     index=False,
 )
 ```
+Read the metadata.
 ```python
 s3_sral_metadata = pd.read_csv(
     path_to_save_data + "s3_sral_metadata.csv"
@@ -488,7 +497,7 @@ s2_metadata = pd.read_csv(
 )
 ```
 
-
+Process the metadata.
 ```python
 s3_sral_metadata["ContentDate.Start"] = pd.to_datetime(
     s3_sral_metadata["ContentDate"].apply(lambda x: eval(x)["Start"])
@@ -509,6 +518,7 @@ results = check_collocation(
 )
 ```
 
+Display an map visualisation of the first 5 collocated satellite observations. 
 ```python
 from IPython.display import display
 
