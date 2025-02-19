@@ -8,21 +8,22 @@
 
 #### Basic Code Implementation
 
-
+This code is used to connect GoogleDrive into Colab.
 ```python
 from google.colab import drive
 drive.mount('/content/drive')
 ```
-
+Install the rasterio
 ```python
 pip install rasterio
 ```
 
+Install the netCDF4 library
 ```python
 pip install netCDF4
 ```
 
-
+A basic K-means clustering algorithm and visualisation of K-means clustering results.
 ```python
 # Python code for K-means clustering
 from sklearn.cluster import KMeans
@@ -49,6 +50,7 @@ plt.show()
 
 #### Basic Code Implementation
 
+The implementation of GMM clustering and visualisation results.
 ```python
 from sklearn.mixture import GaussianMixture
 import matplotlib.pyplot as plt
@@ -73,6 +75,8 @@ plt.show()
 
 ### Image Classification
 #### K-Means Implementation
+
+Proceed K-means clustering and classify surface features on Sentinel-2 satellite images, and visualisation result.
 ```python
 import rasterio
 import numpy as np
@@ -120,7 +124,7 @@ del kmeans, labels, band_data, band_stack, valid_data_mask, X, labels_image
 
 #### GMM Implementation
 
-
+Proceed GMM clustering and classify surface features on Sentinel-2 satellite images, and visualisation result.
 ```python
 import rasterio
 import numpy as np
@@ -170,6 +174,7 @@ plt.show()
 
 #### Read in Functions Needed
 
+Process Sentinel-3 SAR altimetry data.
 ```python
 #
 from netCDF4 import Dataset
@@ -375,7 +380,7 @@ def calculate_SSD(RIP):
 
     return SSD
 ```
-
+Process and analyse Sentinel-3 SAR altimetry data.
 ```python
 path = '/content/drive/MyDrive/GEOL0069/week4/Unsupervised Learning/'
 SAR_file = 'S3A_SR_2_LAN_SI_20190307T005808_20190307T012503_20230527T225016_1614_042_131______LN3_R_NT_005.SEN3'
@@ -413,6 +418,7 @@ scaler = StandardScaler()
 data_normalized = scaler.fit_transform(data)
 ```
 
+Remove the NaN data.
 ```python
 # Remove any rows that contain NaN values
 nan_count = np.isnan(data_normalized).sum()
@@ -429,6 +435,7 @@ waves_cleaned = waves_cleaned[(flag_cleaned==1)|(flag_cleaned==2)]
 flag_cleaned = flag_cleaned[(flag_cleaned==1)|(flag_cleaned==2)]
 ```
 
+
 ```python
 gmm = GaussianMixture(n_components=2, random_state=0)
 gmm.fit(data_cleaned)
@@ -440,7 +447,7 @@ unique, counts = np.unique(clusters_gmm, return_counts=True)
 class_counts = dict(zip(unique, counts))
 print("Cluster counts:", class_counts)
 ```
-
+Using GMM to perform an analysis and visualisation the mean and standard deviation of waveforms for different clusters.
 ```python
 # mean and standard deviation for all echoes
 mean_ice = np.mean(waves_cleaned[clusters_gmm==0],axis=0)
@@ -460,20 +467,21 @@ plt.title('Plot of mean and standard deviation for each class')
 plt.legend()
 ```
 
-
+Plot of all waveform echoes in the dataset.
 ```python
 x = np.stack([np.arange(1,waves_cleaned.shape[1]+1)]*waves_cleaned.shape[0])
 plt.plot(x,waves_cleaned)  # plot of all the echos
 plt.show()
 ```
 
+Plot of all waveform echoes classified as leads in the dataset.
 ```python
 # plot echos for the lead cluster
 x = np.stack([np.arange(1,waves_cleaned[clusters_gmm==1].shape[1]+1)]*waves_cleaned[clusters_gmm==1].shape[0])
 plt.plot(x,waves_cleaned[clusters_gmm==1])  # plot of all the echos
 plt.show()
 ```
-
+Plot of all waveform echoes classified as sea ice in the dataset.
 ```python
 # plot echos for the sea ice cluster
 x = np.stack([np.arange(1,waves_cleaned[clusters_gmm==0].shape[1]+1)]*waves_cleaned[clusters_gmm==0].shape[0])
@@ -483,6 +491,7 @@ plt.show()
 
 ### Scatter Plots of Clustered Data
 
+Three scatter graphs for the relationship between sig_0, PP and SSD.
 ```python
 plt.scatter(data_cleaned[:,0],data_cleaned[:,1],c=clusters_gmm)
 plt.xlabel("sig_0")
@@ -499,7 +508,7 @@ plt.ylabel("SSD")
 
 ### Waveform Alignment Using Cross-Correlation
 
-
+This code aligns waveforms in the cluster where clusters_gmm == 0 by using cross-correlation
 ```python
 from scipy.signal import correlate
  
@@ -524,10 +533,10 @@ plt.title('Plot of 10 equally spaced functions where clusters_gmm = 0 (aligned)'
 
 ### Compare with ESA data
 
+Compare the results with ESA data and creat confusion matrix and classification report.
 ```python
 flag_cleaned_modified = flag_cleaned - 1
 ```
-
 
 ```python
 from sklearn.metrics import confusion_matrix, classification_report
